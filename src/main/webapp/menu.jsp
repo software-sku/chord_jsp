@@ -2,7 +2,7 @@
       <a href="./mainpage.jsp" class="d-flex align-items-center text-dark text-decoration-none">
       
       <img 
-            src="./resource/image/generated-image.png" 
+            src="./resources/image/generated-image.png" 
             alt="Chord icon"
             width="32"
             height="32"
