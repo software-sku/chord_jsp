@@ -26,6 +26,7 @@
             %>
             <section class="col-9 d-flex align-items-start justify-content-center p-4">
                 <div class="bg-white rounded-4 p-4 w-100" style="max-width: 720px;">
+                <form action="./processJoinChat.jsp" method="get">
 					<table border="1">
 						<tr>
         					<th>이름</th>
@@ -41,12 +42,13 @@
 									out.print("<td>" + item.getRoomname() + "</td>");
 									out.print("<td>" + item.getDescription() + "</td>");
 									out.print("<td>" + item.getEntry() + "</td>");
-									out.print("<td>" + "<button>참여하기" + "</td>");
+									out.print("<td>" + "<button type='submit' name='id' value='" + item.getRoomId() + "'>참여하기</button>" + "</td>");
 									out.print("</tr>");
 								}
 							%>
 						</tr>
 					</table>
+				</form>
                 </div>
             </section>
 

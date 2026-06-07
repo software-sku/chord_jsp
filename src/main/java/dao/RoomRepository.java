@@ -27,5 +27,14 @@ public class RoomRepository {
 	public ArrayList<chatroom> getAllChatrooms(){
 		return	listOfChatrooms;
 	}
+	
+	public void addChatroom(chatroom newChatroom)
+	{
+			listOfChatrooms.add(newChatroom);
+	}
+	public void removeChatroom(chatroom removedChatroom)
+	{
+		listOfChatrooms.removeIf(room -> room.getRoomId() == removedChatroom.getRoomId());
+	}
 
 }
