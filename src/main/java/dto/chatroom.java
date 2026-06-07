@@ -1,7 +1,7 @@
 package dto;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
 public class chatroom implements Serializable {
 		private static final long serialVersionUID=-4274700572038677000L;
 		
@@ -10,7 +10,7 @@ public class chatroom implements Serializable {
 		private String description;
 		private int entry;
 		private String filename;
-		
+		private ArrayList<chatroom> listOfSubChatrooms = new ArrayList<chatroom>();
 		public chatroom() {
 			super();
 		}
@@ -61,5 +61,7 @@ public class chatroom implements Serializable {
 		public void setFilename(String filename) {
 			this.filename = filename;
 		}
-
+		public ArrayList<chatroom> getAllSubChatrooms(){
+			return	listOfSubChatrooms;
+		}
 }
