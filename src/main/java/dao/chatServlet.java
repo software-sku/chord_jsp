@@ -1,6 +1,7 @@
 package dao;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -8,19 +9,23 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class chatServelet extends HttpServlet {
+public class chatServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 7956004107068743954L;
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
-		int roomId = Integer.parseInt(req.getParameter("roomId"));
-		String messageType = req.getParameter("messageType");
+		MultipartRequest multi = new MultipartRequest(req, "./", 5*1024*1024, "utf-8", new DefaultFileRenamePolicy());
+
+		String roomId = multi.getParameter("roomId");
+		String messageType = multi.getParameter("messageType");
 		
 		resp.setContentType("(text/html);charset-UTF-8");
 		switch(messageType) {
 		case "text":
-			resp.getWriter().write(req.getParameter("message"));
+			System.out.print(multi.getParameter("message"));
 			break;
 		case "image":
 			break;
