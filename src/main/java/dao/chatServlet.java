@@ -11,6 +11,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import dto.chat;
+
 public class chatServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 7956004107068743954L;
@@ -21,11 +23,12 @@ public class chatServlet extends HttpServlet {
 
 		String roomId = multi.getParameter("roomId");
 		String messageType = multi.getParameter("messageType");
-		
+		String message = multi.getParameter("message");
+		long chatTime = Long.parseLong(multi.getParameter("chatTime"));
 		resp.setContentType("(text/html);charset-UTF-8");
 		switch(messageType) {
 		case "text":
-			System.out.print(multi.getParameter("message"));
+			RoomRepository.getRoom(roomId).addChat(new chat(roomId, messageType, message, chatTime));;
 			break;
 		case "image":
 			break;

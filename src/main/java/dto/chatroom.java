@@ -10,6 +10,18 @@ public class chatroom implements Serializable {
 		private String description;
 		private int entry;
 		private String filename;
+		private ArrayList<chat> listOfChats = new ArrayList<chat>();
+		public ArrayList<chat> getAllChats() {
+			return listOfChats;
+		}
+		public void addChat(chat newChat)
+		{
+				listOfChats.add(newChat);
+		}
+		public void removeChatroom(chat removedChat)
+		{
+			listOfChats.removeIf(Chat -> Chat.getUId() == removedChat.getUId());
+		}
 		public chatroom() {
 			super();
 		}

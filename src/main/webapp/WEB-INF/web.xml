@@ -3,8 +3,16 @@
 	<servlet-name>chatServlet</servlet-name>
 	<servlet-class>dao.chatServlet</servlet-class>
 </servlet>
+<servlet>
+	<servlet-name>chatPollServlet</servlet-name>
+	<servlet-class>dao.chatPollServlet</servlet-class>
+</servlet>
 <servlet-mapping>
 	<servlet-name>chatServlet</servlet-name>
 	<url-pattern>/submitChat</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>chatPollServlet</servlet-name>
+	<url-pattern>/pollChat</url-pattern>
 </servlet-mapping>
 </web-app>
