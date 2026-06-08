@@ -1,6 +1,13 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+String custId = (String)session.getAttribute("custId");
 
+if(custId== null){
+    response.sendRedirect("login.jsp");
+    return;
+}
+%>
 <head>
     <title>CreateChatRoom</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -21,7 +28,7 @@
     
     <div class = "row align-items-md-stretch">
     	<div class="text-end">
-    		<a href="?language=ko">Korean</a> | <a href="?language=en">English</a>
+    		<a href="?language=ko">Korean</a> | <a href="?language=en">English</a> | <a href="logout.jsp" class="btn btn-sm btn-danger">Logout</a>
     	</div>
     	<form name="newBook" action="./processCreateChatroom.jsp" class="form-horizontal" method = "post" enctype="multipart/form-data">
     		<div class= "mb-3 row">
