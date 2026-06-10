@@ -2,10 +2,10 @@ package dao;
 
 import java.util.ArrayList;
 import dto.chatroom;
-
 public class RoomRepository {
 	
 	private ArrayList<chatroom> listOfChatrooms = new ArrayList<chatroom>();
+	private static RoomRepository instance = new RoomRepository();
 
 	public RoomRepository() {
 		chatroom chatroom1 = new chatroom("rm0000001", "전체 체팅방", 0);
@@ -15,8 +15,22 @@ public class RoomRepository {
 		listOfChatrooms.add(chatroom1);
 		
 	}
+	public static RoomRepository getInstance() {
+		return instance;
+	}
 	public ArrayList<chatroom> getAllChatrooms(){
 		return	listOfChatrooms;
 	}
-
+	
+	public void addRoom(chatroom room) {
+		listOfChatrooms.add(room);
+	}
+	public chatroom getRoomById(String roomId) {
+        for (chatroom room : listOfChatrooms) {
+            if (room.getRoomId().equals(roomId)) {
+                return room;
+            }
+        }
+        return null;
+    }
 }

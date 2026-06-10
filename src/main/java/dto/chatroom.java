@@ -8,6 +8,7 @@ public class chatroom implements Serializable {
 		private String roomId;
 		private String roomname;
 		private String description;
+		private String password;
 		private int entry;
 		private String filename;
 		
@@ -18,6 +19,7 @@ public class chatroom implements Serializable {
 		public chatroom(String roomId, String roomname, int entry) {
 			this.roomId=roomId;
 			this.roomname=roomname;
+			
 			this.entry = entry;
 			this.roomId=roomId;
 		}
@@ -36,6 +38,14 @@ public class chatroom implements Serializable {
 
 		public void setRoomname(String roomname) {
 			this.roomname = roomname;
+		}
+		
+		public String getPassword() {
+			return password;
+		}
+
+		public void setPassword(String password) {
+			this.password = password;
 		}
 
 		public String getDescription() {
