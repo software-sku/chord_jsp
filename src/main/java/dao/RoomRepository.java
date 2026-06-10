@@ -13,7 +13,6 @@ public class RoomRepository {
 		chatroom chatroom1 = new chatroom("rm0000001", "전체 체팅방", 0);
 		chatroom1.setDescription("최초로 생성되는 채팅방이다.");
 		chatroom1.setFilename("default.jpg");
-		chatroom1.addChat(new chat("rm0000001", "text", "hello. world!", 0));
 		
 		listOfChatrooms.add(chatroom1);
 		

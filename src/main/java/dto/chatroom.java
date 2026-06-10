@@ -1,7 +1,13 @@
 package dto;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import db.dbAccess;
 public class chatroom implements Serializable {
 		private static final long serialVersionUID=-4274700572038677000L;
 		
@@ -16,7 +22,24 @@ public class chatroom implements Serializable {
 		}
 		public void addChat(chat newChat)
 		{
-				listOfChats.add(newChat);
+				try {
+					Connection conn = dbAccess.connect();
+					Statement stmt = conn.createStatement();
+					String sql = "INSERT INTO chats VALUES(" + 
+					"'" + newChat.getUId().toString() + "'," +
+					"'" + newChat.getRoomId() + "'," +
+					"'" + newChat.getMessageType() + "'," +
+					"'" + newChat.getMessage() + "'," +
+					"'" + newChat.getChatTime() + "'," +
+					"'" + newChat.getId() + "'," +
+					"'" + newChat.getName() + "'" +
+							");";
+					stmt.execute(sql);
+					listOfChats.add(newChat);
+					conn.close();
+				} catch (SQLException ex) {
+					System.err.print(ex.getMessage());
+				}
 		}
 		public void removeChatroom(chat removedChat)
 		{
@@ -31,6 +54,30 @@ public class chatroom implements Serializable {
 			this.roomname=roomname;
 			this.entry = entry;
 			this.roomId=roomId;
+			try {
+			Connection conn = dbAccess.connect();
+			String sql = "SELECT * FROM chats WHERE roomId = "+ "'" + roomId + "'";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			ResultSet result = stmt.executeQuery(sql);
+			while(result.next())
+			{
+				chat newChat;
+				newChat = new chat(
+						result.getString("uid"), 
+						result.getString("roomId"), 
+						result.getString("messageType"), 
+						result.getString("message"), 
+						Long.parseLong(result.getString("chatTime")),
+						result.getString("id"), 
+						result.getString("name")
+								);
+				listOfChats.add(newChat);
+			}
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		public String getRoomId() {

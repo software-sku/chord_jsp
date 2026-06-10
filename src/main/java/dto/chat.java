@@ -22,13 +22,27 @@ public class chat implements Serializable {
 	public long getChatTime() {
 		return chatTime;
 	}
-	public chat(String roomId, String messageType, String message, long chatTime) {
+	public chat(String roomId, String messageType, String message, long chatTime, String id, String name) {
 		super();
 		this.roomId = roomId;
 		this.messageType = messageType;
 		this.message = message;
 		this.chatTime = chatTime;
+		this.name = name;
+		this.id = id;
 	}
+	
+	public chat(String uid, String roomId, String messageType, String message, long chatTime, String id, String name) {
+		super();
+		this.UId = UUID.fromString(uid);
+		this.roomId = roomId;
+		this.messageType = messageType;
+		this.message = message;
+		this.chatTime = chatTime;
+		this.name = name;
+		this.id = id;
+	}
+
 	public UUID getUId() {
 		return UId;
 	}
@@ -37,4 +51,14 @@ public class chat implements Serializable {
 	private String messageType = "none";
 	private String message = "";
 	private long chatTime = 0;
+	private String id ="";
+	private String name ="";
+
+	public String getId() {
+		return id;
+	}
+	public String getName() {
+		return name;
+	}
+	 
 }

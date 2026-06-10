@@ -26,10 +26,11 @@ function getChatCache(roomId)
 }
 
 window.addEventListener("DOMContentLoaded", function() {
-	let init = getChatCache(getRoomId())
+	//if(document.getElementById("chats").hasChildNodes){return;}
+	let init = getChatCache(getRoomId());
 	writeChat(init);
+	pollChat();
     }, false);
-
 async function postChat() {
 	const roomId = getRoomId();
 
@@ -82,13 +83,12 @@ function pollChat() {
 
       response.json().then((receivedJson) => {
         console.log(receivedJson);
-        console.log("수신성공");
 		let cache = sessionStorage.getItem(roomId);
 		if(cache == null){cache = "[]";}
 		cache = JSON.parse(cache);
 		if(cache.length < receivedJson.length){
 			sessionStorage.setItem(roomId, JSON.stringify(receivedJson));
-			const begin = receivedJson.length - cache.length;
+			const begin = cache.length;
 			writeChat(receivedJson.slice(begin));
 		}
       });

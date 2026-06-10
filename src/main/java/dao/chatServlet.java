@@ -25,18 +25,13 @@ public class chatServlet extends HttpServlet {
 		String messageType = multi.getParameter("messageType");
 		String message = multi.getParameter("message");
 		long chatTime = Long.parseLong(multi.getParameter("chatTime"));
+		String id = (String) req.getSession().getAttribute("id");
+		if(id == null)id="not_logged_in";
+		String name = (String) req.getSession().getAttribute("name");
+		if(name==null)name="not_logged_in";
+		
 		resp.setContentType("(text/html);charset-UTF-8");
-		switch(messageType) {
-		case "text":
-			RoomRepository.getRoom(roomId).addChat(new chat(roomId, messageType, message, chatTime));;
-			break;
-		case "image":
-			break;
-		case "video":
-			break;
-		case "file":
-			break;
-		}
+		RoomRepository.getRoom(roomId).addChat(new chat(roomId, messageType, message, chatTime, id, name));;
 	}
 
 }
