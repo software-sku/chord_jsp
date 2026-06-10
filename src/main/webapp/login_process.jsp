@@ -21,6 +21,12 @@ try {
     if(rs.next()) {
         session.setAttribute("custId", id);
         session.setAttribute("custName", rs.getString("name"));
+        
+        //쿠키 저장
+        Cookie cookie = new Cookie("saveId", id);
+        cookie.setMaxAge(-1); //채팅 대화 내용 유출 방지(브라우저 종료시 닫기)
+        response.addCookie(cookie);
+        
         response.sendRedirect("createChatroom.jsp");
         
         out.println("로그인 완료<br>");
