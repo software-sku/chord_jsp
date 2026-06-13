@@ -17,8 +17,6 @@
 
     Class.forName("com.mysql.jdbc.Driver"); //전공 교재 드라이버 활용
     conn = DriverManager.getConnection(url, user, password);
-
-    out.println("DB 연결 성공");
 %>
 </body>
 </html>
