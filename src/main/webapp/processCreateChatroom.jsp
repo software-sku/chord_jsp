@@ -25,13 +25,22 @@
 	String fileName = multi.getFilesystemName(fname);
 	
 	if (fileName == null) {
-	    fileName = "default.jpg";
+	    fileName = "default.png";
+	}
+	
+	if (files.hasMoreElements()) {
+	    fname = (String) files.nextElement();
+	    String uploadedFile = multi.getFilesystemName(fname);
+	    if (uploadedFile != null) {
+	        fileName = uploadedFile;
+	    }
 	}
 
 	chatroom room = new chatroom();
 	room.setRoomId(roomId);
 	room.setRoomname(roomname);
 	room.setDescription(description);
+	room.setPassword(password == null ? "" : password);
 	room.setFilename(fileName);
 	room.setEntry(0);
 
@@ -44,5 +53,5 @@
 	RoomRepository dao = RoomRepository.getInstance();
 	dao.addRoom(room);
 	
-	response.sendRedirect("mainpage.jsp");
+	response.sendRedirect("mainpage.jsp?roomId=" + roomId);
 %>

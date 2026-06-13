@@ -17,14 +17,22 @@
             </aside>
 
             <section class="col-9 d-flex align-items-start justify-content-center p-4">
-                <div class="bg-white rounded-4 p-4 w-100" style="max-width: 720px;">
-                    <h2 class="mb-3">Chord에 오신 것을 환영합니다</h2>
-                    <p class="mb-0">
-                        chatSidebar가 출력하는 메뉴 또는 채팅방 목록 옆에 이 문장이 보이게 됩니다.
-                    </p>
-                </div>
-            </section>
-
+			    <div class="bg-white rounded-4 p-4 w-100" style="max-width: 720px;">
+			        <%
+			            String roomId = request.getParameter("roomId");
+			            if (roomId != null && !roomId.trim().equals("")) {
+			        %>
+			            <jsp:include page="showRoomDetail.jsp" />
+			        <%
+			            } else {
+			        %>
+			            <h2 class="mb-3">Chord</h2>
+			            <p class="mb-0">chatSidebar에서 채팅방을 선택하세요.</p>
+			        <%
+			            }
+			        %>
+			    </div>
+			</section>
         </div>
     </main>
     <div class="text-end">

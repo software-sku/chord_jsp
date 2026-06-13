@@ -7,15 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="./resources/js/validation.js"></script>
 </head>
-<script>
-document.getElementById("usePassword").addEventListener("change", function() {
-    const pwdInput = document.getElementById("password");
-    pwdInput.disabled = !this.checked;
-    if (!this.checked) {
-        pwdInput.value = "";
-    }
-});
-</script>
 <%
 String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 StringBuilder roomIdBuilder = new StringBuilder();
@@ -92,6 +83,15 @@ String generatedRoomId = roomIdBuilder.toString();
     			</div>
     		</div>
     	</form>
+    	<script>
+		document.getElementById("usePassword").addEventListener("change", function() {
+		    const pwdInput = document.getElementById("password");
+		    pwdInput.disabled = !this.checked;
+		    if (!this.checked) {
+		        pwdInput.value = "";
+		    }
+		});
+		</script>
     </div>
 	    <%@ include file="footer.jsp" %>
    	</div>

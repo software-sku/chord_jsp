@@ -10,9 +10,9 @@ public class RoomRepository {
 	public RoomRepository() {
 		chatroom chatroom1 = new chatroom("rm0000001", "전체 체팅방", 0);
 		chatroom1.setDescription("최초로 생성되는 채팅방이다.");
-		chatroom1.setFilename("default.jpg");
-		
-		listOfChatrooms.add(chatroom1);
+		chatroom1.setFilename("default.png");
+        chatroom1.setPassword("");
+        listOfChatrooms.add(chatroom1);
 		
 	}
 	public static RoomRepository getInstance() {
