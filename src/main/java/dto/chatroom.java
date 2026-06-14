@@ -53,7 +53,6 @@ public class chatroom implements Serializable {
 		public chatroom(String roomId, String roomname, int entry) {
 			this.roomId=roomId;
 			this.roomname=roomname;
-			
 			this.entry = entry;
 			this.roomId=roomId;
 			try {
@@ -105,6 +104,10 @@ public class chatroom implements Serializable {
 		public void setPassword(String password) {
 			this.password = password;
 		}
+		
+		public boolean hasPassword() {
+	        return password != null && !password.trim().equals("");
+	    }
 
 		public String getDescription() {
 			return description;
