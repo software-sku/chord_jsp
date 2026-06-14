@@ -2,15 +2,15 @@ package dto;
 
 public class customer {
     private String id;
-    private String password;
+    private String passwd;
     private String name;
 
     public customer() {
     }
 
-    public customer(String id, String password, String name) {
+    public customer(String id, String passwd, String name) {
         this.id = id;
-        this.password = password;
+        this.passwd = passwd;
         this.name = name;
     }
 
@@ -23,11 +23,11 @@ public class customer {
     }
 
     public String getPassword() {
-        return password;
+        return passwd;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.passwd = passwd;
     }
 
     public String getName() {
