@@ -1,0 +1,10 @@
+DROP TABLE chats;
+CREATE TABLE chats (
+uid VARCHAR(200) NOT NULL,
+roomId VARCHAR(100),
+messageType VARCHAR(10),
+message LONGTEXT,
+chatTime BIGINT,
+id VARCHAR(100),
+name VARCHAR(100)
+);

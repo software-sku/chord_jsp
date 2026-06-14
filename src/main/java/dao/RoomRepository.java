@@ -1,6 +1,8 @@
 package dao;
 
 import java.util.ArrayList;
+
+import dto.chat;
 import dto.chatroom;
 public class RoomRepository {
 	
@@ -43,6 +45,14 @@ public class RoomRepository {
 	public void removeChatroom(chatroom removedChatroom)
 	{
 		listOfChatrooms.removeIf(room -> room.getRoomId() == removedChatroom.getRoomId());
+	}
+	public static chatroom getRoom(String roomId) {
+		for(chatroom room : RoomRepository.get().getAllChatrooms()) {
+			if(room.getRoomId().equals(roomId)) {
+				return room;
+			}
+		}
+		return null;
 	}
 
 }
